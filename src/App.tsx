@@ -8,17 +8,12 @@ import RootBoundary from "./components/errors/RootBoundary";
 import Layout from "./layout";
 import Index from "./pages/index";
 import NotFound from "./pages/NotFound";
-import { useTheme } from "./theme/use-theme";
 
 const App = () => {
-  const { theme } = useTheme();
-
   const router = createBrowserRouter([
     {
       path: "/",
-      element: (
-        <Layout showSidebar={false} showHeader={false} showFooter={false} />
-      ),
+      element: <Layout />,
       errorElement: <RootBoundary />,
       children: [
         {
@@ -35,10 +30,8 @@ const App = () => {
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-      <Theme appearance={theme === "system" ? "light" : theme}>
-        <div className={theme}>
-          <RouterProvider router={router} />
-        </div>
+      <Theme>
+        <RouterProvider router={router} />
       </Theme>
     </ThemeProvider>
   );
