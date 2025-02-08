@@ -1,37 +1,24 @@
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { Navbar } from "@/components/blocks/navbar";
+import { HeroSection } from "@/components/blocks/hero-section";
+import { ServicesSection } from "@/components/blocks/services-section";
+import { ContactSection } from "@/components/blocks/contact-section";
 
-
-export default function IndexPage() {
-  const navigate = useNavigate()
-
+export default function HomePage() {
   return (
-    <div className="container mx-auto px-4 py-16 space-y-32">
-      {/* Hero Section */}
-      <motion.section 
-        className="text-center space-y-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <Badge variant="secondary" className="mb-4">
-          Welcome to Your New App
-        </Badge>
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-          Build Beautiful Interfaces
-          <br />
-          With Altan AI
-        </h1>
-        <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-          Start chatting to edit this app.
-        </p>
-        <Button size="lg" className="mt-4" onClick={() => navigate('/')}>
-          Cool button <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
-      </motion.section>
+    <div className="min-h-screen">
+      <Navbar />
+      <main>
+        <div id="inicio">
+          <HeroSection />
+        </div>
+        <ServicesSection />
+        <ContactSection />
+      </main>
+      <footer className="bg-gray-900 text-white py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p>&copy; {new Date().getFullYear()} Protect Armour. Todos los derechos reservados.</p>
+        </div>
+      </footer>
     </div>
-  )
+  );
 }
